@@ -1,5 +1,13 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
-export default defineConfig({});
+import cloudflare from '@astrojs/cloudflare';
+
+export default defineConfig({
+  integrations: [starlight({
+    title: 'MCFSO',
+    disable404Route: true,
+  })],
+
+  adapter: cloudflare(),
+});

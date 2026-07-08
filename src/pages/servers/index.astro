@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import ServerCard from '../../components/ServerCard.astro';
+import { getCollection } from 'astro:content';
+
+const allServers = await getCollection('servers');
+const sorted = allServers
+  .map((entry) => ({
+    slug: entry.id,
+    name: entry.data.name,
+    icon: entry.data.icon,
+    description: entry.data.description,
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name, 'zh-CN'));
+---
+
+<Layout>
+  <Header />
+  <main class="list-page">
+    <div class="list-header">
+      <h2 class="list-title">服务器列表</h2>
+      <p class="list-count"><span id="server-count">{sorted.length}</span> 个服务器</p>
+    </div>
+    <div class="card-grid" id="server-grid">
+      {sorted.map((server) => (
+        <ServerCard
+          name={server.name}
+          icon={server.icon}
+          description={server.description}
+          slug={server.slug}
+        />
+      ))}
+    </div>
+    <div id="empty-state" class="empty-state" hidden>
+      <p>没有找到匹配的服务器</p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .list-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  .list-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .list-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .list-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+</style>

@@ -1,46 +1,31 @@
-# Astro Starter Kit: Basics
+## MCFSO Website
 
-```sh
-npm create astro@latest -- --template basics
+新生MC服务器宣传组织
+
+加服务器直接搞 Pull requests
+
+示例文件（MD/MDX）
+
+```
+---
+name: A Minecraft 服务器
+icon: /MCFSO.png
+description: 一个原版生存服务器，拥有友好的社区和丰富的插件支持。
+---
+
+## A Minecraft 服务器
+
+这是一个长期运行的生存服务器，专注于提供纯净的游戏体验。
+
+### 服务器规则
+
+1. 禁止使用作弊客户端
+2. 尊重其他玩家
+3. 禁止破坏他人建筑
+
+### 连接方式
+
+服务器地址：`play.example.com`
+
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
