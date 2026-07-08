@@ -20,23 +20,11 @@ const { Content } = await render(entry);
 <Layout>
   <Header hideSearch={true} />
   <main class="detail-page">
-    <div class="detail-header">
-      <a href="/servers" class="back-link">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5" />
-          <path d="m12 19-7-7 7-7" />
-        </svg>
-        返回列表
-      </a>
-      <div class="server-info">
-        <img src={entry.data.icon} alt="" class="detail-icon" width="64" height="64" />
-        <div>
-          <h1 class="detail-name">{entry.data.name}</h1>
-          <p class="detail-desc">{entry.data.description}</p>
-        </div>
-      </div>
+    <a href="/servers" class="back-link">返回列表</a>
+    <div class="server-header">
+      <h1 class="server-name">{entry.data.name}</h1>
+      <p class="server-desc">{entry.data.description}</p>
     </div>
-    <hr class="divider" />
     <article class="content">
       <Content />
     </article>
@@ -45,192 +33,140 @@ const { Content } = await render(entry);
 
 <style>
   .detail-page {
-    max-width: 960px;
+    background: var(--canvas);
+    padding: var(--spacing-section) var(--spacing-lg);
+    max-width: 980px;
     margin: 0 auto;
-    padding: 32px 24px 64px;
   }
 
   .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-    transition: color 0.2s;
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: -0.374px;
+    color: var(--primary);
+    display: inline-block;
+    margin-bottom: var(--spacing-lg);
   }
 
   .back-link:hover {
-    color: var(--accent);
+    text-decoration: underline;
   }
 
-  .detail-header {
-    margin-bottom: 20px;
+  .server-header {
+    margin-bottom: var(--spacing-xl);
   }
 
-  .server-info {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .detail-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
-    object-fit: contain;
-    background: var(--bg-deep);
-    flex-shrink: 0;
-  }
-
-  .detail-name {
+  .server-name {
     font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.75rem;
-    color: var(--text-primary);
-    line-height: 1.2;
-    margin-bottom: 4px;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: var(--ink);
+    margin-bottom: 8px;
   }
 
-  .detail-desc {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
+  .server-desc {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: var(--ink);
   }
 
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin-bottom: 32px;
-  }
-
+  /* Markdown content styles */
   .content {
     font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.8;
-    color: var(--text-primary);
-  }
-
-  .content :global(h2) {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.4rem;
-    margin-top: 2em;
-    margin-bottom: 0.75em;
-    color: var(--text-primary);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: var(--ink);
   }
 
   .content :global(h3) {
     font-family: var(--font-display);
+    font-size: 34px;
     font-weight: 600;
-    font-size: 1.15rem;
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    color: var(--text-primary);
+    line-height: 1.47;
+    letter-spacing: -0.374px;
+    color: var(--ink);
+    margin-top: 2em;
+    margin-bottom: 1em;
   }
 
   .content :global(p) {
     margin-bottom: 1em;
-    color: var(--text-secondary);
   }
 
-  .content :global(ul),
+  .content :global(strong) {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Ordered list */
   .content :global(ol) {
     margin-bottom: 1em;
     padding-left: 1.5em;
-    color: var(--text-secondary);
   }
 
-  .content :global(li) {
-    margin-bottom: 0.25em;
+  .content :global(ol li) {
+    margin-bottom: 0.5em;
+    color: var(--ink);
   }
 
-  .content :global(blockquote) {
-    border-left: 3px solid var(--accent);
-    padding-left: 16px;
-    margin: 1em 0;
-    color: var(--text-secondary);
-    font-style: italic;
+  /* Unordered list */
+  .content :global(ul) {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
   }
 
+  .content :global(ul li) {
+    margin-bottom: 0.5em;
+    color: var(--ink);
+  }
+
+  .content :global(ul ul) {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+
+  /* Inline code */
   .content :global(code) {
-    font-family: var(--font-mono);
-    font-size: 0.875em;
-    background: var(--bg-card);
+    font-family: var(--font-body);
+    font-size: 15px;
+    background: var(--divider-soft);
     padding: 2px 6px;
-    border-radius: 4px;
-    color: var(--accent);
+    border-radius: var(--rounded-xs);
+    color: var(--ink);
   }
 
-  .content :global(pre) {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    overflow-x: auto;
-    margin: 1em 0;
-  }
-
-  .content :global(pre code) {
-    background: none;
-    padding: 0;
-    border-radius: 0;
-    color: var(--text-primary);
-  }
-
-  .content :global(table) {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1em 0;
-  }
-
-  .content :global(th),
-  .content :global(td) {
-    border: 1px solid var(--border);
-    padding: 8px 12px;
-    text-align: left;
-    font-size: 0.9rem;
-  }
-
-  .content :global(th) {
-    background: var(--bg-card);
-    font-family: var(--font-display);
-    font-weight: 600;
-    color: var(--text-primary);
-  }
-
-  .content :global(td) {
-    color: var(--text-secondary);
-  }
-
+  /* Links */
   .content :global(a) {
-    color: var(--accent);
+    color: var(--primary);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   .content :global(a:hover) {
-    color: var(--accent-hover);
+    text-decoration-thickness: 2px;
   }
 
-  .content :global(img) {
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    margin: 1em 0;
+  @media (max-width: 834px) {
+    .detail-page {
+      padding: 48px var(--spacing-sm);
+    }
+
+    .server-name {
+      font-size: 34px;
+    }
   }
 
   @media (max-width: 640px) {
-    .detail-page {
-      padding: 20px 16px 48px;
-    }
-
-    .detail-name {
-      font-size: 1.35rem;
-    }
-
-    .detail-icon {
-      width: 48px;
-      height: 48px;
+    .server-name {
+      font-size: 28px;
     }
   }
 </style>

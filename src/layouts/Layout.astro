@@ -9,7 +9,7 @@
     <title>MCFSO - 新生MC服务器宣传组织</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   </head>
 	<body>
 		<slot />
@@ -44,19 +44,52 @@
 
 <style is:global>
   :root {
-    --bg-deep: #1a1d23;
-    --bg-surface: #242830;
-    --bg-card: #2a2d35;
-    --text-primary: #e8e4db;
-    --text-secondary: #a09b92;
-    --accent: #d9774a;
-    --accent-hover: #e8895e;
-    --accent-secondary: #2d5a8c;
-    --border: #383c44;
-    --border-light: #454a54;
-    --font-display: 'DM Sans', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    /* Surface */
+    --canvas: #ffffff;
+    --canvas-parchment: #f5f5f7;
+    --surface-pearl: #fafafc;
+    --surface-tile-1: #272729;
+    --surface-tile-2: #2a2a2c;
+    --surface-tile-3: #252527;
+    --surface-black: #000000;
+
+    /* Brand & Accent */
+    --primary: #0066cc;
+    --primary-focus: #0071e3;
+    --primary-on-dark: #2997ff;
+
+    /* Text */
+    --ink: #1d1d1f;
+    --ink-muted-80: #333333;
+    --ink-muted-48: #7a7a7a;
+    --on-dark: #ffffff;
+    --body-muted: #cccccc;
+
+    /* Hairlines & Borders */
+    --divider-soft: #f0f0f0;
+    --hairline: #e0e0e0;
+
+    /* Rounded */
+    --rounded-xs: 5px;
+    --rounded-sm: 8px;
+    --rounded-md: 11px;
+    --rounded-lg: 18px;
+    --rounded-pill: 9999px;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 17px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-section: 80px;
+
+    /* Shadow */
+    --product-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px;
+
+    /* Type */
+    --font-display: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   *, *::before, *::after {
@@ -68,16 +101,19 @@
   html, body {
     width: 100%;
     min-height: 100vh;
-    background: var(--bg-deep);
-    color: var(--text-primary);
+    background-color: var(--canvas);
+    color: var(--ink);
     font-family: var(--font-body);
-    line-height: 1.6;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.47;
+    letter-spacing: -0.374px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   a {
-    color: inherit;
+    color: var(--primary);
     text-decoration: none;
   }
 
@@ -87,12 +123,12 @@
   }
 
   ::selection {
-    background: var(--accent);
-    color: var(--bg-deep);
+    background: var(--primary);
+    color: var(--canvas);
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--primary-focus);
     outline-offset: 2px;
   }
 
